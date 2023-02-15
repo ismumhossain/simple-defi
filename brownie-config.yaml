@@ -15,9 +15,10 @@ networks:
         verify: False
     kovan:
         verify: True
-        # weth_token: '0xd0a1e359811322d97991e03f863a0c30c2cf029c'
-        # fau_token: '0xFab46E002BbF0b4509813474841E0716E6730136'
-        # dai_usd_price_feed: '0x777A68032a88E5A84678A77Af2CD65A7b3c0775a'
-        # eth_usd_price_feed: '0x9326BFA02ADD2366b30bacB125260Af641031331'
+        weth_token: '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6'
+        fau_token: '0xba62bcfcaafc6622853cca2be6ac7d845bc0f2dc'
+        dai_usd_price_feed: '0x0d79df66BE487753B02D015Fb622DED7f0E9798d'
+        eth_usd_price_feed: '0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e'
+        # All these addresses are for goerli testnet
 wallets:
     from_key: ${PRIVATE_KEY}
