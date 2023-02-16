@@ -48,7 +48,7 @@ contract DeFi is Ownable {
         s_tokenToPrice[_token] = _priceFeed;
     }
 
-    function setToken(string memory name, address tokenAddress) external {
+    function setToken(string memory name, address tokenAddress) external onlyOwner {
         s_tokens[_tokenId.current()] = Token(name, tokenAddress);
         _tokenId.increment();
     }
