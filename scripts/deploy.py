@@ -11,6 +11,7 @@ def deploy_defi_and_ih_token():
         ih_token.address,
         {"from": account}
     )
+    return ih_token, defi
 
 def main():
     deploy_defi_and_ih_token()
