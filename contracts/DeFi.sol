@@ -69,9 +69,14 @@ contract DeFi is Ownable {
         }
         address _tokenAddress = token._tokenAddress;
         IERC20(_tokenAddress).transferFrom(msg.sender, address(this), _amount);
+        if(staker._token.length == 0) {
+          staker._token.push(address(0));
+        }
         for(uint256 i = 0; i < staker._token.length; i++) {
-            if (token._tokenAddress != staker._token[i]) {
-                staker._token.push(token._tokenAddress);
+            if (_tokenAddress == staker._token[i]) {
+                break;
+            } else {
+              staker._token.push(_tokenAddress);
             }
         }
         staker._balance += _amount;
