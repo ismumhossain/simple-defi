@@ -29,7 +29,7 @@ contract DeFi is Ownable {
         address _tokenAddress;
     }
 
-    event Staked(address indexed _staker, uint256 _amount, uint256 indexed _idOfToke);
+    event Staked(address indexed _staker, uint256 _amount, uint256 indexed _idOfToken);
     event Unstaked(address indexed _unstaker, uint256 _amount, uint256 indexed _idOfToken);
 
     mapping(address => Staker) private s_stakers;
