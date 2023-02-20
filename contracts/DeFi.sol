@@ -29,7 +29,7 @@ contract DeFi is Ownable {
         address _tokenAddress;
     }
 
-    event Staked(address indexed _staker, uint256 _amount, uint256 indexed _idOfToken);
+    event Staked(address indexed _staker, uint256 _amount, uint256 indexed _idOfToke);
     event Unstaked(address indexed _unstaker, uint256 _amount, uint256 indexed _idOfToken);
 
     mapping(address => Staker) private s_stakers;
@@ -42,6 +42,7 @@ contract DeFi is Ownable {
 
     constructor(IERC20 ihToken) {
         s_ihToken = ihToken;
+
     }
 
     function setPrice(address _token, address _priceFeed) external onlyOwner {
@@ -102,16 +103,13 @@ contract DeFi is Ownable {
 
     function claimReward() external {
         Staker storage staker = s_stakers[msg.sender];
-        if(staker._token[0] == address(0)) {
-            revert YouAreNotTheStaker();
-        }
         uint256 reward = calculateReward() + staker._reward;
         if(reward <= 0) {
             revert YouDoNotHaveReward();
         }
         staker._lastTimeUpdate = block.timestamp;
         staker._reward = 0;
-        s_ihToken.transfer(msg.sender, reward);
+        s_ihToken.transferFrom(owner(), msg.sender, reward);
     }
 
     function getTokenValue(address _token) public view returns (uint256, uint256) {
